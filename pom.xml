@@ -27,7 +27,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>26</java.version>
+		<java.version>25</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -125,8 +125,7 @@
 		<dependency>
 			<groupId>org.modelmapper</groupId>
 			<artifactId>modelmapper</artifactId>
-			<version>3.2.6</version>
-			<scope>compile</scope>
+			<version>3.2.4</version>
 		</dependency>
 		<!-- Source: https://mvnrepository.com/artifact/software.amazon.awssdk/s3 -->
 		<dependency>
