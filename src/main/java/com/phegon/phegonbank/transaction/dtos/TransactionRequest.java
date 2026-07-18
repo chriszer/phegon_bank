@@ -11,7 +11,9 @@ import java.math.BigDecimal;
 public class TransactionRequest {
     private TransactionType transactionType;
     private BigDecimal amount;
+    private String description;
     private String accountNumber;
+
 
     private String destinationAccountNumber; // The receiving account number if it's a transfer
     
