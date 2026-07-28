@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableAsync;
 @SpringBootApplication
 @EnableAsync
-@RequiredArgsConstructor
+//@RequiredArgsConstructor
 public class PhegonbankApplication {
 
 //	private final NotificationService notificationService;
