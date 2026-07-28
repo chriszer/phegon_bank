@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Install the Apache Maven build tool
 # Update package lists and install Maven without recommended packages to keep the layer small
-RUN apt-get update && apt-get install -y --no-install-recommends maven && rm -rf /var/lib/apt/list/*
+RUN apt-get update && apt-get install -y --no-install-recommends maven && rm -rf /var/lib/apt/lists/*
 
 # Copy the Project Object Model (POM) file from the host to the container's WORKDIR (/app).
 COPY pom.xml .
@@ -18,7 +18,7 @@ RUN mvn dependency:go-offline -B
 COPY src ./src
 
 # Package Build the Spring Boot application into a JAR file
-RUN mvn clean package -Dmaven.test.skip-true
+RUN mvn clean package -Dmaven.test.skip=true
 
 # Stage 2 is to  build a production ready image and run
 # set up runstime environment
