@@ -19,7 +19,7 @@ public class TransactionController {
         return ResponseEntity.ok(transactionService.createTransaction(transactionRequest));
     }
 
-    @PostMapping("/{accountNumber}")
+    @GetMapping("/{accountNumber}")
     public ResponseEntity<Response<?>> getTransactionForMyAccount(
             @PathVariable String accountNumber,
             @RequestParam(defaultValue = "0") int page,

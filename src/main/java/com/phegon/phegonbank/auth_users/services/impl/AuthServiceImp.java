@@ -26,6 +26,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseCookie;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -125,7 +126,6 @@ public class AuthServiceImp implements AuthService {
                 .message("Your account has been created successfully")
                 .data("Email of your account details has been sent to you. Your account number is: " + savedAccount.getAccountNumber())
                 .build();
-
 
     }
 

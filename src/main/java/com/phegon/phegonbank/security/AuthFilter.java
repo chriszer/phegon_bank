@@ -42,7 +42,7 @@ public class AuthFilter extends OncePerRequestFilter {
                email = tokenService.getUsernameFromToken(token);
 
            }catch(Exception e){
-               log.error("Exception occured while extracting username from token");
+               log.error("Exception occurred while extracting username from token");
                AuthenticationException authenticationException = new BadCredentialsException(e.getMessage());
                customAuthenticationEntryPoint.commence(request,response,authenticationException);
                return;
