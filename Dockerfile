@@ -8,22 +8,26 @@ WORKDIR /app
 # Update package lists and install Maven without recommended packages to keep the layer small
 RUN apt-get update && apt-get install -y --no-install-recommends maven && rm -rf /var/lib/apt/list/*
 
+# Copy the Project Object Model (POM) file from the host to the container's WORKDIR (/app).
 COPY pom.xml .
 
+# Download project dependencies
 RUN mvn dependency:go-offline -B
 
+# Copy the application's source code
 COPY src ./src
 
+# Package Build the Spring Boot application into a JAR file
 RUN mvn clean package -Dmaven.test.skip-true
 
-#Stage 2 is to  build a production ready image and run
-
+# Stage 2 is to  build a production ready image and run
+# set up runstime environment
 FROM eclipse-temurin:25-jre-jammy
 
 WORKDIR /app
 
-#Copy the final executable JAR file from the 'builder' stage's target directory
-#This is a key advantage of multi-stage buils: only the artifact is copied, not build tools or sources.
+# Copy the final executable JAR file from the 'builder' stage's target directory
+# This is a key advantage of multi-stage buils: only the artifact is copied, not build tools or sources.
 COPY --from=builder /app/target/*.jar app.jar
 
 EXPOSE 8090
