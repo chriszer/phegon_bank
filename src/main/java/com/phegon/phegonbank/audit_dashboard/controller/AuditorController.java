@@ -4,7 +4,6 @@ package com.phegon.phegonbank.audit_dashboard.controller;
 import com.phegon.phegonbank.account.dtos.AccountDTO;
 import com.phegon.phegonbank.audit_dashboard.service.AuditorService;
 import com.phegon.phegonbank.auth_users.dtos.UserDTO;
-import com.phegon.phegonbank.res.Response;
 import com.phegon.phegonbank.transaction.dtos.TransactionDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
