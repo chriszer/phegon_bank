@@ -21,11 +21,11 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/audit")
 @RequiredArgsConstructor
-@PreAuthorize("hasAuthority('ADMIN') or hasAuthority('AUDITOR')")
 public class AuditorController {
 
     private  final AuditorService auditorService;
 
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('AUDITOR')")
     @GetMapping("/totals")
     public ResponseEntity<Map<String,Long>> getSystemTotals(){
         return ResponseEntity.ok(auditorService.getSystemTotals());
@@ -45,7 +45,7 @@ public class AuditorController {
         return accountDTO.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
-
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('AUDITOR')")
     @GetMapping("/transactions/by-account")
     public ResponseEntity<List<TransactionDTO>> findTransactionsByAccountNumber(@RequestParam String accountNumber){
         List<TransactionDTO> transactionDTOList = auditorService.findTransactionsByAccountNumber(accountNumber);
@@ -56,7 +56,7 @@ public class AuditorController {
         return ResponseEntity.ok(transactionDTOList);
     }
 
-
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('AUDITOR')")
     @GetMapping("/transactions/by-id")
     public ResponseEntity<TransactionDTO> getTransactionById(@RequestParam Long id){
         Optional<TransactionDTO> transactionDTO = auditorService.findTransactionById(id);
